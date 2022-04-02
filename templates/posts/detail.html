@@ -6,11 +6,13 @@
 
 {% block content %}
 
-<h1>{{post.title}}</h1>
-<p>{{ post.text }}</p>
-<a href="{% url 'posts_list' %}">Back</a>
-<a href="{% url 'post_edit' post.id %}">Edit Post</a>
-<a href="{% url 'post_delete' post.id %}">Delete Post</a>
+    <h1>{{post.title}}</h1>
+    <p>{{ post.text }}</p>
 
-
+    <a href="{% url 'posts_list' %}">Back</a>
+ 
+    {% if user.is_auntenticated %}
+        <a href="{% url 'post_edit' post.id %}">Edit Post</a>
+        <a href="{% url 'post_delete' post.id %}">Delete Post</a>
+    {% endif %}
 {% endblock content %}
